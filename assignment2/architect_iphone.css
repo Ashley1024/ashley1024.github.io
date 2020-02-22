@@ -1,0 +1,293 @@
+* {
+  box-sizing: border-box;
+}
+
+@import url(//db.onlinewebfonts.com/c/daedaf09cc827df4b0f600758a637215?family=Verdana);
+@import url(//db.onlinewebfonts.com/c/8d223b3ad8d4819e9dcf22757e4cc2c4?family=Arial);
+body {
+  font-size: 20px;
+  font-family: Arial;
+}
+
+main {
+  width: 89%;
+  margin: 0 auto;
+}
+
+h2 {
+  padding: 3em 1em 1em;
+}
+
+nav {
+  display: inline-block;
+  position: fixed;
+  clear: both;
+  background: white;
+  height: 3em;
+  width: 100%;
+  margin-right: 0;
+  position: fixed;
+  z-index: 1;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+nav a:hover {
+  background-color: grey;
+}
+
+nav .left .BR {
+  font-family: Verdana;
+  font-weight: bold;
+}
+
+.left {
+  position: relative;
+  float: left;
+  padding: 1em 0em 1em 1em;
+}
+
+.architect_img {
+  /* position: relative; */
+  width: 100%;
+  min-width: 300px;
+  z-index: -1;
+  clear: both;
+  padding: 0%;
+}
+
+img {
+  width: 100%;
+}
+
+.BR_Architect .BR {
+  background: 1em rgba(0, 0, 0, 0.7);
+  padding: 3% 3%;
+}
+
+.BR_Architect .arc {
+  display: none;
+}
+
+.BR_Architect {
+  position: absolute;
+  padding: 25% 41%;
+  font-size: 1em;
+  font-family: Verdana;
+  font-weight: bold;
+  color: white;
+}
+
+.projects {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.projects .example_house .name_house {
+  background: 2em black;
+  color: white;
+  position: absolute;
+}
+
+.about .team_name {
+  font-size: 1.4em;
+  padding-top: 0.3em;
+  padding-bottom: 0.7em;
+}
+
+.about .job_position {
+  color: grey;
+}
+
+button {
+  background: grey 3em;
+  text-align: center;
+  padding: 0.4em;
+  width: 100%;
+  margin: -0.2em 0em 2em;
+}
+
+.about .about_detail {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.about .basic_text {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.about .img3 {
+  width: 100%;
+  filter: grayscale(70%);
+}
+
+li {
+  padding: 0.3em;
+}
+
+.contact input {
+  width: 100%;
+  margin: auto;
+}
+
+@media only screen and (max-width: 400px) {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-size: 20px;
+    font-family: Arial;
+  }
+  nav {
+    display: table;
+    position: relative;
+    clear: both;
+    background: white;
+    height: 3em;
+    width: 100%;
+    margin-right: 0;
+  }
+  nav .left .br {
+    font-family: Verdana;
+  }
+  .left {
+    position: relative;
+    float: left;
+    padding: 1em 0em 1em 1em;
+  }
+  .right {
+    display: none;
+    /* position: relative;
+                float: right;
+                vertical-align: initial;
+                padding: 2% 2%; */
+  }
+  .architect_img {
+    /* position: relative; */
+    width: 375px;
+    z-index: -1;
+    clear: both;
+    padding: 0%;
+  }
+  img {
+    width: 100%;
+  }
+  .BR_Architect {
+    position: absolute;
+    padding: 25% 41%;
+  }
+  .BR_Architect .BR {
+    background: 3em rgba(0, 0, 0, 0.7);
+    font-family: Verdana;
+    color: white;
+    font-size: 2em;
+    padding: 3% 20%;
+  }
+  .BR_Architect .arc {
+    display: none;
+  }
+  main {
+    width: 80%;
+    margin: 0 auto;
+  }
+  h2 {
+    padding: 3em 1em 1em;
+  }
+  .projects .example_house {
+    position: relative;
+    padding-top: 0.8em;
+  }
+  .projects .example_house .name_house {
+    background: 2em black;
+    color: white;
+    position: absolute;
+  }
+  .about .team_name {
+    font-size: 1.4em;
+    padding-top: 0.3em;
+    padding-bottom: 0.7em;
+  }
+  .about .job_position {
+    color: grey;
+  }
+  button {
+    background: grey 3em;
+    text-align: center;
+    padding: 0.4em;
+    width: 100%;
+    margin: -0.2em 0em 2em;
+  }
+  button .submit {
+    background-color: black;
+  }
+  .about .basic_text {
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+  .about .img3 {
+    width: 100%;
+    filter: grayscale(70%);
+  }
+  li {
+    padding: 0.3em;
+  }
+}
+
+@media (min-width: 401px) and (max-width: 650px) {
+  .right_bar .right {
+    position: relative;
+    float: right;
+    padding: 4% 2%;
+  }
+  .BR_Architect .arc {
+    display: inline;
+  }
+  .projects .example_house {
+    width: 47%;
+  }
+  .about .about_detail .team {
+    width: 47%;
+  }
+}
+
+@media (min-width: 651px) {
+  .right_bar .right {
+    position: relative;
+    float: right;
+    padding: 2.3% 2%;
+  }
+  .BR_Architect .arc {
+    display: inline;
+  }
+  .projects .example_house {
+    width: 47%;
+  }
+  .about .about_detail .team {
+    width: 47%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .right_bar .right {
+    position: relative;
+    float: right;
+    padding: 2% 2%;
+  }
+  .BR_Architect .arc {
+    display: inline;
+  }
+  .projects .example_house {
+    width: 23%;
+  }
+  .about .about_detail .team {
+    width: 23%;
+  }
+}
