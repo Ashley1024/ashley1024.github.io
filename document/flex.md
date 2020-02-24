@@ -1,3 +1,15 @@
+# flex 
+
+~~~css
+
+container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+~~~~
+
 ## flex manage the content inside used at row picture
 
 main axie cross axie
@@ -9,7 +21,8 @@ flex-direction: column;
 flex-direction: row;
 flex-direction: row-reverse;
 
-justify-content: space-around; space-between; center; end; flex-end;
+justify-content: 
+space-around; space-between; center; end; flex-end;
 box : margin
 
 if container has a height, justify-content:spcace-evenly;
@@ -40,3 +53,4 @@ justify-content: flex-start; flex-end;center;space-between; space-around;
 align-items: flex-start; flex-end;center;baseline; stretch
 
 Sometimes reversing the row or column order of a container is not enough. In these cases, we can apply the order property to individual items. By default, items have a value of 0, but we can use this property to also set it to a positive or negative integer value (-2, -1, 0, 1, 2).
+

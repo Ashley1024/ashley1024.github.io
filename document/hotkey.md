@@ -28,3 +28,7 @@
 6. 鼠标点两次选单词，点三次句子
 
 7. alt+箭头，代码上下移动
+
+8. alt+space+n  minimize windows
+
+9. alt+space+x  maximize

@@ -1,5 +1,3 @@
-## display
-
 ## text-decoration
 
 ## font
@@ -15,6 +13,20 @@ base on the top
 
 font-weight: "bold"; 
 light, 100
+
+## vh
+
+那有没有一个单位不需要JS和CSS耦合在一起的单位？答案是有的，就是vw／vh。
+
+vw = view width
+vh = view height
+
+body {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  
+}
 
 ## Google font
 
