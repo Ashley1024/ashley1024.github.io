@@ -1,5 +1,10 @@
 # Media Quries
 
+~~~css
+@media only screen and (min-width: 600px) {
+
+~~~
+
 ## 
 
 in css  after two box 
@@ -15,7 +20,8 @@ in css  after two box
   margin: auto;
   width: 600px;
   height: 300px;
-  background: blue;
+  background: bl
+  ue;
 }
 @media only  screen and (min-width: 600px) {
 
@@ -33,9 +39,9 @@ or max-width
 
 .box1, .box2
 
-##
 You can also have different stylesheets for different media, like this:
 
+~~~html
 <link rel="stylesheet" media="screen and (min-width: 900px)" href="widescreen.css">
 <link rel="stylesheet" media="screen and (max-width: 600px)" href="smallscreen.css">
 ....
