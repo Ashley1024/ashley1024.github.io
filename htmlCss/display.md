@@ -12,6 +12,14 @@
 
 1. span, a ,img
 
+
+## display 
+
+1. inline ,只有一行
+2. inline-block,
+3. block, 换行
+
+
 ## change display
 
 Override The Default Display Value
