@@ -1,4 +1,6 @@
 # assignments
 
-* [week3 assignment1](https://janekee.github.io/htmlcreate/architect.html)
-* [week3 assignment2](https://janekee.github.io/assignment2/index.html)
+* [website](https://janekee.github.io/htmlcreate/architect.html)
+* [repairList](https://janekee.github.io/assignment2/index.html)
+* [gobang](https://janekee.github.io/gobang/gobang.html)
+
