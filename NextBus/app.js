@@ -127,6 +127,9 @@ sectionEle.addEventListener('click', function (e) {
   if (e.target.tagName.toLowerCase() === "a" && e.target !== undefined) {
     let streetkey = e.target.dataset.streetKey;
     searchstops(streetkey);
+
+    //careful, we have to clear previous schedule results after one click 
+    tbodyEle.innerHTML = '';
   }
   e.preventDefault();
 });
