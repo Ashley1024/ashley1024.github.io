@@ -42,7 +42,7 @@ function searchstops(_streetkey) {
     .then(resp => resp.json())
     .then(json => {
       // if we can't find any stop alert message,or go next step
-      if (json.stops.length === 0) {
+      if (json.stops.length === 0 || json.stops == undefined) {
         alert('sorry, there is no stop');
       } else {
         searchschedule(json.stops);
@@ -53,30 +53,35 @@ function searchstops(_streetkey) {
 
 // step3 using searched stops to find route schedule
 function searchschedule(_stops) {
-  _stops.forEach(element => {
-
-    fetch(`https://api.winnipegtransit.com/v3/stops/${element.key}/schedule.json?max-results-per-route=2&api-key=${APIkey}`)
-      .then(resp => resp.json())
-      .then(json => {
-        insertResultHtml(json['stop-schedule']);
-      })
-  });
+  Promise.all(
+    _stops.forEach(element => {
+      if (element !== undefined) {
+        fetch(`https://api.winnipegtransit.com/v3/stops/${element.key}/schedule.json?max-results-per-route=2&api-key=${APIkey}`)
+          .then(resp => resp.json())
+          .then(json => {
+            if (json['stop-schedule'] != undefined) {
+              insertResultHtml(json['stop-schedule']);
+            }
+          })
+      }
+    }));
 }
 
 
 // step4 insert result html
 function insertResultHtml(schedule) {
   let html = "";
-  //todo get every route from rout-schedules
-  schedule['route-schedules'].forEach(element => {
 
-    //todo create an obj to store all data we will use
-    let obj = { objstop: schedule.stop.name, objcross: schedule.stop['cross-street'].name, objdirect: schedule.stop.direction, objBus: element.route.number, objnextbus: element['scheduled-stops'][0].times.arrival.scheduled }
+  //todo get every route from route-schedules,if no route-schedules skip
+  if (schedule['route-schedules'].length >= 1) {
+    schedule['route-schedules'].forEach(element => {
+      console.log(element);
+      element['scheduled-stops'].forEach(alltime => {
+        if (alltime.times.arrival != undefined) {
+          let obj = { objstop: schedule.stop.name, objcross: schedule.stop['cross-street'].name, objdirect: schedule.stop.direction, objBus: element.route.number, objnextbus: alltime.times.arrival.scheduled }
 
-    //todo time format
-    let time = timeformat(obj.objnextbus);
-
-    html += `
+          let time = timeformat(obj.objnextbus);
+          html += `
         <tr>
           <td>${obj.objstop}</td>
           <td>${obj.objcross}</td>
@@ -85,7 +90,18 @@ function insertResultHtml(schedule) {
           <td>${time}</td>
         </tr>
         `
-  });
+        }
+      });
+      //todo create an obj to store all data we will use
+
+
+      //todo time format
+
+
+    })
+  } else {
+    console.log('there is no route schedule');
+  };
 
   tbodyEle.insertAdjacentHTML('beforeend', html);
 }
@@ -94,9 +110,15 @@ function insertResultHtml(schedule) {
 function timeformat(str) {
   const date = new Date(str);
   let arr = [];
-
   arr[0] = date.getHours();
-  arr[1] = `:${date.getMinutes()}`;
+  arr[1] = date.getMinutes();
+
+  //fix the bug if minute=1,will show 1:1,
+  if (arr[1] < 10) {
+    arr[1] = `:0${date.getMinutes()}`;
+  } else {
+    arr[1] = `:${date.getMinutes()}`;
+  }
 
   if (arr[0] > 12) {
     arr[0] = arr[0] - 12;
