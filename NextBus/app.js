@@ -3,6 +3,7 @@ const formEle = document.querySelector('form')
 const inputEle = document.querySelector('input')
 const sectionEle = document.querySelector('section')
 const tbodyEle = document.querySelector('.tbody')
+const streetNameEle = document.getElementById('street-name');
 
 // step1 search input street and insert html 
 function searchstreet(street) {
@@ -20,6 +21,7 @@ function searchstreet(street) {
         inputEle.value = "";
         alert('No results were found, please try again.')
       } else {
+
         insertstreetHtml(json.streets);
       }
     })
@@ -28,7 +30,8 @@ function searchstreet(street) {
 function insertstreetHtml(_streets) {
   //todo All previous results be removed
   let html = '';
-
+  sectionEle.innerHTML = '';
+  tbodyEle.innerHTML = '';
   _streets.forEach(element => {
     html += `<a href="#" data-street-key=${element.key}>${element.name}</a>`
   });
@@ -56,15 +59,18 @@ function searchschedule(_stops) {
   Promise.all(
     _stops.forEach(element => {
       if (element !== undefined) {
+
         fetch(`https://api.winnipegtransit.com/v3/stops/${element.key}/schedule.json?max-results-per-route=2&api-key=${APIkey}`)
           .then(resp => resp.json())
           .then(json => {
-            if (json['stop-schedule'] != undefined) {
+            if (json['stop-schedule'] !== undefined) {
               insertResultHtml(json['stop-schedule']);
             }
           })
       }
     }));
+
+
 }
 
 
@@ -133,9 +139,7 @@ function timeformat(str) {
 
 //todo submit input content
 formEle.addEventListener('submit', function (e) {
-  //clear all previous results
-  sectionEle.innerHTML = '';
-  tbodyEle.innerHTML = '';
+
 
   if (inputEle.value !== "") {
     let input = inputEle.value;
@@ -152,6 +156,7 @@ sectionEle.addEventListener('click', function (e) {
 
     //careful, we have to clear previous schedule results after one click 
     tbodyEle.innerHTML = '';
+    streetNameEle.innerHTML = `Displaying results for ${e.target.innerHTML}`;
   }
   e.preventDefault();
 });
